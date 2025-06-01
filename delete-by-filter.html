@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filteration</title>
+    <style>
+        .ulList {
+            /* display: flex; */
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        .ulList li {
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="">
+        <input type="text" placeholder="Enter Title" name="title">
+        <button type="submit">Add Title</button>
+
+    </form>
+
+    <ul class="ulList"></ul>
+
+    <script>
+
+        let inp = document.querySelector('input')
+        let btn = document.querySelector('form')
+        let ulList = document.querySelector('.ulList')
+
+        let data = []
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let value = inp.value.trim()
+
+            if (value == '') {
+                return;
+            }
+
+
+            let obj = {
+                title: value
+            }
+
+
+
+            data.unshift(obj) /// method
+
+            ulList.innerHTML = data.map((ele, idx) => {
+
+                return (
+                    `<li>${ele.title}     <i onclick="del(${idx})">delete</i></li>   `
+                )
+
+            }).join('')
+
+            inp.value = ''
+            
+            
+
+
+            
+        })
+        
+
+        function del(idxx) {
+            console.log(idxx);
+
+            let filterdArr = data.filter((ele, iddx) => iddx !== idxx) /// login for del element 
+            //jo match ni hity unko filter ma store kr rha ha !
+
+            
+
+            ulList.innerHTML = ''
+            // data = []
+            data = filterdArr
+            
+
+            ulList.innerHTML = data.map((ele, idx) => {
+
+                return (
+                    `<li>${ele.title}     <i onclick="del(${idx})">delete</i></li>   `
+                )
+
+            }).join('')
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

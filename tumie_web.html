@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./cat.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Tumie_web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        main {
+            width: 100%;
+            height: max-content;
+            overflow: hidden;
+            transition: .1s ease;
+        }
+
+        header {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav {
+            width: 80%;
+            height: 100px;
+            /* border: solid white; */
+            position: absolute;
+            z-index: 3;
+            left: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .h_logodiv {
+            width: 170px;
+            height: max-content;
+            /* border: solid white; */
+            cursor: pointer;
+        }
+
+        .logo_img {
+            width: 100%;
+        }
+
+        #navbar {
+            width: 600px;
+            height: max-content;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .nav_list {
+            transition: .3s linear;
+            color: white;
+            cursor: pointer;
+            list-style: none;
+            text-shadow: 1px 1px 2px white;
+            font-size: 20px;
+        }
+
+        .nav_list:hover {
+            color: yellow;
+            text-shadow: 1px 1px 2px yellow;
+            transform: scale(1.2);
+            font-weight: bold;
+        }
+
+        .home {
+            color: yellow;
+            transform: scale(1.2);
+            font-weight: bold;
+        }
+
+        .nav_icondiv {
+            width: 230px;
+            height: max-content;
+            /* border: solid white; */
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+        }
+
+        .nav_icondiv i {
+            color: white;
+            font-size: 25px;
+            text-shadow: 1px 1px 3px black;
+            transition: .3s ease-in;
+        }
+
+        .nav_icondiv i:hover {
+            cursor: pointer;
+            text-shadow: 1px 1px 1px yellow;
+            transform: scale(1.2);
+            color: yellow;
+        }
+
+        .not_div {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: -12px;
+            right: 17px;
+            background-color: yellow;
+            box-shadow: 1px 1px 7px yellow;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 15px;
+            cursor: pointer;
+            padding-top: 3px;
+        }
+
+        .h_display1 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url(./slider-bg.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s ease;
+
+        }
+
+        .h_dis_prt1 {
+            width: 40%;
+            height: 82%;
+            /* border: solid white; */
+            margin-top: 120px;
+            cursor: context-menu;
+        }
+
+        .h_p1 {
+            color: white;
+            text-shadow: .1px .1px 3px white;
+            font-size: 25px;
+            position: relative;
+            margin-left: 80px;
+            margin-top: 150px;
+            transform: translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_p1_anim {
+            animation: h_p1 .8s ease-in forwards;
+        }
+
+        @keyframes h_p1 {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        .h_p1::before {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: yellow;
+            box-shadow: .1px .1px 3px yellow;
+            border-radius: 20px;
+            top: 40%;
+            left: -15%;
+        }
+
+        .h_p2 {
+            color: white;
+            font-size: 65px;
+            margin-top: 40px;
+            letter-spacing: 4px;
+            text-shadow: .1px .1px 3px white;
+            transform: translateY(40px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_p2_anim {
+            animation: h_p2 .8s ease-in forwards .5s;
+        }
+
+        @keyframes h_p2 {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        .h_btn_1 {
+            width: 140px;
+            margin-top: 40px;
+            height: 40px;
+            background-color: rgb(223, 194, 27);
+            box-shadow: 3px 3px 7px rgb(238, 147, 11);
+            color: white;
+            text-shadow: .1px .1px 3px white;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 20px;
+            transition: .3s ease;
+            cursor: pointer;
+            transform: translateY(40px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_btn_1:hover {
+            letter-spacing: 2px;
+        }
+
+        .h_btn_1_anim {
+            animation: h_btn_1 .8s ease-in forwards .8s;
+        }
+
+        @keyframes h_btn_1 {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        .h_yellowcircle {
+            width: 500px;
+            height: 500px;
+            border-radius: 300px;
+            background-color: yellow;
+            box-shadow: .1px .1px 10px yellow;
+            margin-top: 14%;
+            margin-left: 6%;
+            transform: scale(.7);
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .h_yc_anime {
+            animation: h_yc .8s ease-in forwards .6s;
+        }
+
+        @keyframes h_yc {
+            from {
+                transform: scale(.7);
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+                visibility: visible;
+                transform: scale(1);
+            }
+        }
+
+        .dog_img {
+            width: 30%;
+            position: absolute;
+            bottom: 0%;
+            right: 4%;
+            filter: drop-shadow(1px 1px 10px black);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .dog_anime {
+            animation: dog_anime .8s ease-in forwards;
+        }
+
+        @keyframes dog_anime {
+            from {
+                right: 4%;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                opacity: 1;
+                visibility: visible;
+                right: 14%;
+            }
+        }
+
+        .h_display2 {
+            width: 100%;
+            height: 100%;
+            background-image: url(./slider-02.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s ease;
+        }
+
+        .h_dis_2blckdiv {
+            background-color: rgba(0, 0, 0, 0.477);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .h_dis2_innerborder {
+            width: 600px;
+            height: 500px;
+            /* border: solid white; */
+            cursor: context-menu;
+            position: absolute;
+            right: 7%;
+            top: 20%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .h_d2_p1 {
+            color: yellow;
+            font-size: 23px;
+            letter-spacing: 3px;
+            text-shadow: .1px .1px 5px yellow;
+            transform: translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_d2_p1anime {
+            animation: .5s h_d2_p1anime ease-in forwards;
+        }
+
+        @keyframes h_d2_p1anime {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .h_d2_p2 {
+            color: white;
+            font-size: 57px;
+            text-shadow: .1px .1px 3px white;
+            transform: translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_d2_p2anime {
+            animation: .5s h_d2_p2anime ease-in forwards .5s;
+        }
+
+        @keyframes h_d2_p2anime {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .h_d2_p3 {
+            color: white;
+            font-size: 20px;
+            text-shadow: .1px .1px 3px white;
+            transform: translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_d2_p3anime {
+            animation: .5s h_d2_p3anime ease-in forwards 1s;
+        }
+
+        @keyframes h_d2_p3anime {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .h_d2_btn {
+            width: 140px;
+            /* margin-top: 40px; */
+            height: 40px;
+            background-color: rgb(223, 194, 27);
+            box-shadow: 3px 3px 7px rgb(238, 147, 11);
+            color: white;
+            text-shadow: .1px .1px 3px white;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 20px;
+            transition: .3s ease;
+            cursor: pointer;
+            transform: translateY(40px);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .h_d2_btn:hover {
+            letter-spacing: 2px;
+        }
+
+        .h_d2_btnanime {
+            animation: .5s h_d2_btnanime ease-in forwards 1.5s;
+        }
+
+        @keyframes h_d2_btnanime {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .h_arrow_div {
+            width: 180px;
+            height: 70px;
+            /* border: solid white; */
+            position: absolute;
+            right: 2%;
+            bottom: 0;
+            z-index: 3;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s linear;
+        }
+
+        header:hover .h_arrow_div {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .h_left_arrow_div {
+            width: 50px;
+            height: 50px;
+            border-radius: 70px;
+            border: solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.467);
+            transition: .3s ease-in;
+            color: white;
+            transform: translateX(30px);
+            opacity: .5;
+            text-shadow: .1px .1px 3px white;
+        }
+
+        header:hover .h_left_arrow_div {
+            transform: translateX(0);
+        }
+
+        .h_right_arrow_div {
+            width: 50px;
+            height: 50px;
+            border-radius: 70px;
+            border: solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 25px;
+            text-shadow: .1px .1px 3px white;
+            color: white;
+            transition: .3s ease-in;
+            background-color: rgba(255, 255, 255, 0.467);
+        }
+
+        .cart_side_div {
+            width: 400px;
+            z-index: 4;
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: scroll;
+            /* border: solid black; */
+            background-color: white;
+            box-shadow: .1px .1px 3px white;
+            transition: all .5s ease;
+            right: -400px;
+
+        }
+
+        .csd_price {
+            width: 90%;
+            left: 5%;
+            height: 70px;
+            /* border: solid black; */
+            position: absolute;
+            border-radius: 10px;
+            bottom: 2%;
+            font-size: 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            box-shadow: .1px .1px 7px black;
+            cursor: context-menu;
+            background-color: rgb(232, 232, 232);
+        }
+
+        #csd_price {
+            margin-left: 10px;
+            cursor: context-menu;
+            font-weight: 100;
+            color: black;
+        }
+
+        .cart_side_div::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 10px;
+            background-color: rgb(190, 190, 190);
+        }
+
+        .cart_side_div::-webkit-scrollbar-thumb {
+            background: purple;
+            border-radius: 10px;
+        }
+
+        .cart_side_div::-webkit-scrollbar-thumb:hover {
+            background: var(--black);
+            cursor: pointer;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        .black_bg {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.459);
+            z-index: 3;
+            opacity: 0;
+            transition: all .5s ease;
+            visibility: hidden;
+        }
+
+        .csd_div1 {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: purple;
+            box-shadow: .1px .1px 3px purple;
+            text-shadow: .1px .1px 3px yellow;
+            color: yellow;
+            transition: .3s linear;
+            cursor: pointer;
+            /* border: solid black; */
+        }
+
+        .csd_div1:hover {
+            background-color: black;
+            box-shadow: .1px .1px 3px black;
+            color: white;
+        }
+
+        .csd_p1 {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .fa-angle-right {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .csd_div2 {
+            width: 90%;
+            height: max-content;
+            /* border: solid black; */
+            margin: auto;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .csd_cross {
+            color: black;
+            position: absolute;
+            top: 2%;
+            cursor: pointer;
+            right: 2%;
+            font-size: 15px;
+
+        }
+
+        .csd_quantity {
+            height: 40px;
+            width: min-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            cursor: context-menu;
+        }
+
+        .fa-minus {
+            cursor: pointer;
+        }
+
+        .fa-plus {
+            cursor: pointer;
+        }
+
+        .sec_1 {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            cursor: context-menu;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 60px;
+            background-color: rgb(238, 238, 238);
+            padding-bottom: 20px;
+        }
+
+        .s1_img {
+            width: 100px;
+            height: 100px;
+            top: 15%;
+            left: 46%;
+            position: absolute;
+            filter: grayscale(100%);
+            opacity: .1;
+            filter: drop-shadow(.1px .1px 3px black);
+            animation: kit_paw 1s infinite alternate;
+        }
+
+        @keyframes kit_paw {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        .s1_p1 {
+            color: purple;
+            font-size: 25px;
+            text-shadow: .1px .1px 3px purple;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .s1_p2 {
+            font-size: 50px;
+            color: black;
+            font-weight: bold;
+            margin-top: -30px;
+        }
+
+        .s1_img_border {
+            width: 80%;
+            height: 200px;
+            /* border: solid black; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+        }
+
+        .s1_img_border_2 {
+            width: 100%;
+            height: 50px;
+            /* border: solid black; */
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            color: black;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .s1_name1 {
+            margin-left: 100px;
+        }
+
+        .s1_name2 {
+            margin-left: 150px;
+        }
+
+        .s1_name3 {
+            margin-left: 90px;
+        }
+
+        .s1_name4 {
+            margin-left: 150px;
+        }
+
+        .s1_name5 {
+            margin-left: 150px;
+        }
+
+        .s1_imgbox {
+            width: 15%;
+            position: relative;
+            height: 90%;
+            /* border: solid black; */
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .s1_imgbox img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            transition: all .5s ease;
+        }
+
+        .s1_imgbox:hover.s1_imgbox img {
+            transform: scale(1.1);
+        }
+
+        .s1_rotate_border {
+            width: 99%;
+            height: 99%;
+            position: absolute;
+            top: .5%;
+            left: .5%;
+            opacity: 0;
+            transition: all .3s linear;
+            border-radius: 50%;
+            border: 2px dashed black;
+            animation: 13s c_r infinite linear;
+            z-index: 2;
+        }
+
+        @keyframes c_r {
+            from {
+                rotate: 0;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        .s1_imgbox:hover .s1_rotate_border {
+            opacity: 1;
+        }
+
+        .sec_3 {
+            width: 100%;
+            height: max-content;
+            background-color: white;
+            padding-top: 150px;
+        }
+
+        .s3_border1 {
+            width: 80%;
+            height: 300px;
+            /* border: solid black; */
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .s3b_prt {
+            width: 48%;
+            height: 100%;
+            position: relative;
+            /* border: solid black; */
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: .1px .1px 10px rgb(255, 191, 0);
+        }
+
+        .s3b_prt img {
+            width: 100%;
+            transition: .3s linear;
+            height: 100%;
+        }
+
+        .s3b_prt:hover.s3b_prt img {
+            transform: scale(1.1);
+        }
+
+        .s3_writediv1 {
+            width: 240px;
+            height: 230px;
+            position: absolute;
+            cursor: pointer;
+            right: 3%;
+            top: 13%;
+            /* border: solid black; */
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sb3_p1 {
+            color: purple;
+            text-shadow: .1px .1px 2px purple;
+            font-size: 30px;
+        }
+
+        .sb3_p2 {
+            color: purple;
+            font-weight: bold;
+            text-shadow: .1px .1px 2px purple;
+            font-size: 40px;
+        }
+
+        .sb3_button {
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 15px;
+            background-color: purple;
+            box-shadow: .1px .1px 7px purple;
+            text-shadow: .1px .1px 3px white;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: .3s ease;
+        }
+
+        .sb3_button:hover {
+            letter-spacing: 0px;
+            opacity: .8;
+        }
+
+        .s3_border2 {
+            width: 100%;
+            height: 300px;
+            /* border: solid black; */
+            cursor: context-menu;
+            position: relative;
+            padding: 0.1px;
+        }
+
+        .s3b2_p1 {
+            color: purple;
+            text-shadow: .1px .1px 3px purple;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .s3b2_p2 {
+            text-align: center;
+            color: black;
+            font-size: 50px;
+            text-shadow: .1px .1px 2px black;
+            margin-top: 30px;
+            letter-spacing: 1px;
+        }
+
+        .s3b2_opt_bordr {
+            width: 80%;
+            height: 50px;
+            /* border: solid black; */
+            margin: auto;
+            margin-top: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .sbb2_opt {
+            padding: 7px 10px;
+            color: black;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 2px dashed transparent;
+            transition: .3s linear;
+            text-shadow: .1px .1px 1px grey;
+        }
+
+        .sbb2_opt:hover {
+            color: purple;
+            text-shadow: .1px .1px 1px purple;
+        }
+
+        .border {
+            border: 2px dashed purple;
+        }
+
+        .sec_4 {
+            width: 100%;
+            height: max-content;
+            background-color: white;
+            padding-bottom: 30px;
+            padding: 0.1px;
+        }
+
+        .s4_border {
+            width: 80%;
+            height: max-content;
+            /* border: solid black; */
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            align-items: center;
+            padding-bottom: 30px;
+
+        }
+
+        .data_border {
+            width: 22%;
+            height: 400px;
+            margin-top: 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            transform: scale(0.2);
+            opacity: 0;
+            transition: all 0.34s linear;
+
+        }
+
+
+
+        .data_img_div {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            transition: .3s linear all;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: .1px 1px 7px whitesmoke;
+        }
+
+        .data_border:hover .data_img_div {
+            box-shadow: .1px .1px 7px grey;
+        }
+
+        .data_img_div img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            transition: .5s ease;
+        }
+
+        .data_border:hover .data_img_div img {
+            transform: scale(1.1);
+        }
+
+
+        .s4_blackdiv {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            transition: .3s ease all;
+            left: 0;
+            z-index: 3;
+        }
+
+        .data_border:hover .s4_blackdiv {
+            background-color: rgba(0, 0, 0, 0.159);
+
+        }
+
+        .s4_icondiv {
+            width: 20%;
+            height: 80%;
+            position: absolute;
+            right: 2%;
+            top: 7%;
+            /* border: solid white; */
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .icon_parent {
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            box-shadow: .1px .1px 3px white;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            font-size: 20px;
+            visibility: hidden;
+            transition: .3s ease-in all;
+        }
+
+        .icon_parent:hover {
+            color: purple;
+        }
+
+        .icon_parent:nth-child(2) {
+            transform: translateX(-20px);
+        }
+
+        .icon_parent:nth-child(3) {
+            transform: translateX(-40px);
+        }
+
+        .data_border:hover .icon_parent {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .pr_nme {
+            margin-top: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+            color: black;
+            text-shadow: .1px .1px 2px black;
+            transition: .3s ease;
+        }
+
+        .pr_nme:hover {
+            text-shadow: .1px .1px 2px purple;
+            color: purple;
+            transform: scale(1.1);
+        }
+
+        .pr_price {
+            margin-top: 10px;
+            color: black;
+            text-shadow: .1px .1px 2px black;
+            transition: .3s ease;
+            cursor: context-menu;
+        }
+
+        .pr_price:hover {
+            color: green;
+            transform: scale(1.1);
+            text-shadow: .1px .1px 2px green;
+        }
+
+        .csd_inner-border {
+            width: 100%;
+            height: 100px;
+            cursor: context-menu;
+            margin-top: 20px;
+            /* border: solid black; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .cib_img_div {
+            width: 70px;
+            height: 80%;
+            /* border: solid black; */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: .1px .1px 7px grey;
+        }
+
+        .cib_img_div img {
+            width: 100%;
+            height: 100%;
+            transform: scale(1.2);
+        }
+
+        .cib_write_div {
+            width: 230px;
+            height: 100%;
+            /* border: solid black; */
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+
+        }
+
+        .np_name {
+            font-weight: bold;
+            font-size: 17px;
+            text-shadow: .1px .1px 2px black;
+            color: black;
+            transition: .3s ease;
+        }
+
+        .np_name:hover {
+            color: purple;
+            cursor: pointer;
+        }
+
+        .s4_blackdiv2 {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.71);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            transition: .2s ease-in all;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .s4_fav_not_border {
+            width: 430px;
+            height: 500px;
+            /* border: solid white; */
+            border-radius: 20px;
+            background-color: white;
+            margin-top: -70px;
+            transition: .3s all ease-in;
+            animation: favanime .4s ease-in forwards;
+            opacity: 0;
+        }
+
+        @keyframes favanime {
+            from {
+                margin-top: -70px;
+                opacity: 0;
+            }
+
+            to {
+                margin-top: 0;
+                opacity: 1;
+            }
+        }
+
+        .fnb_div1 {
+            width: 100%;
+            height: 40px;
+            background-color: purple;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            text-align: center;
+            font-size: 30px;
+            cursor: pointer;
+            padding-top: 5px;
+            color: white;
+            text-shadow: .1px .1px 3px white;
+        }
+
+        .fnb_div2 {
+            width: 90%;
+            height: 80px;
+            /* border: solid black; */
+            font-size: 20px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            font-weight: bold;
+        }
+
+        .fnb_c_div {
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            border: solid 1px black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            opacity: .3;
+        }
+
+        .fnb_imgdiv {
+            width: 80%;
+            height: 300px;
+            /* border: solid black;1 */
+            overflow: hidden;
+            border-radius: 10px;
+            margin: auto;
+        }
+
+        .fnb_imgdiv img {
+            width: 100%;
+            height: 100%;
+            transition: all .3s ease;
+        }
+
+        .fnb_imgdiv img:hover {
+            transform: scale(1.1);
+        }
+
+        .fnb_p1 {
+            color: purple;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 6%;
+        }
+
+        .eye_border {
+            width: 1200px;
+            height: 600px;
+            border: solid white;
+            border-radius: 20px;
+            background-color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+        }
+
+        .eye_mark {
+            position: absolute;
+            top: 2%;
+            left: 1%;
+            color: black;
+            text-shadow: .1px .1px 2px black;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .eye_mark:hover {
+            text-shadow: .1px .1px 2px red;
+            color: red;
+
+        }
+
+        .eye_bp1 {
+            width: 45%;
+            height: 90%;
+            /* border: solid black; */
+
+            background-color: ghostwhite;
+        }
+
+        .eye_bp1 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .eye_bp2 {
+            width: 45%;
+            height: 90%;
+            /* border: solid black; */
+        }
+
+        .eye_write1 {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            cursor: context-menu;
+            flex-direction: column;
+            border-bottom: 1px solid black;
+        }
+
+        .eye_rating_div {
+            width: 450px;
+            /* border: solid black; */
+            height: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .star {
+            width: 30px;
+            height: 30px;
+            transform: translateX(-12px);
+            background-color: rgb(255, 221, 0);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .ew_h1 {
+            color: black;
+            font-size: 40px;
+            cursor: context-menu;
+            font-weight: 400;
+            text-shadow: .1px .1px 3px grey;
+        }
+
+        .ew_h2 {
+            color: black;
+            font-size: 30px;
+            cursor: context-menu;
+            font-weight: bold;
+            text-shadow: .1px .1px 3px grey;
+        }
+
+        .ew_p {
+            color: grey;
+            transition: .2s linear all;
+            cursor: context-menu;
+            text-shadow: .1px .1px 3px grey;
+        }
+
+        .ew_p:hover {
+            text-shadow: .1px .1px 3px purple;
+            color: purple;
+        }
+
+        .eye_write2 {
+            width: 100%;
+            height: 70%;
+            /* border: solid black; */
+            padding: 0.1px;
+            cursor: context-menu;
+        }
+
+        .Lorem {
+            color: black;
+            font-size: 15px;
+            line-height: 20px;
+            margin-top: 30px;
+            text-shadow: .1px .1px 3px grey;
+        }
+
+        span {
+            color: purple;
+            font-weight: bold;
+            text-shadow: .1px .1px 3px purple;
+        }
+
+        .ep_2 {
+            font-size: 20px;
+            text-shadow: .1px .1px 3px grey;
+            margin-top: 20px;
+        }
+
+        .ep_3 {
+            font-size: 20px;
+            text-shadow: .1px .1px 3px grey;
+            margin-top: 7px;
+        }
+
+        .eye_button_border {
+            width: 470px;
+            height: 60px;
+            /* border: solid black; */
+            /* margin: auto; */
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .eye_b1 {
+            width: 80px;
+            height: 50px;
+            /* border: solid black; */
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            box-shadow: .1px .1px 10px orange;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgb(255, 234, 0);
+            text-shadow: .1px .1px 2px black;
+            color: black;
+            font-size: 18px;
+        }
+
+        .eye_b2 {
+            width: 160px;
+            height: 50px;
+            border: none;
+            box-shadow: .1px .1px 7px purple;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: purple;
+            color: white;
+            text-shadow: .1px .1px 3px white;
+            font-weight: bold;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: .3s ease;
+        }
+
+        .eye_b2:hover {
+            box-shadow: .1px .1px 10px orange;
+            background-color: rgb(255, 234, 0);
+            color: black;
+            text-shadow: .1px .1px 2px black;
+        }
+
+        .eye_b3 {
+            width: 60px;
+            height: 50px;
+            /* border: solid black; */
+            border-radius: 10px;
+            display: flex;
+            box-shadow: .1px .1px 10px orange;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgb(255, 234, 0);
+            color: black;
+            text-shadow: .1px .1px 2px black;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .3s linear;
+        }
+
+        .eye_b3:hover {
+            box-shadow: .1px .1px 10px purple;
+            background-color: purple;
+            color: white;
+            text-shadow: .1px .1px 2px white;
+        }
+
+
+
+
+
+        /* /////////////////// */
+        .opacity {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 10px;
+            background-color: rgb(190, 190, 190);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: purple;
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: var(--black);
+            cursor: pointer;
+        }
+
+        .top {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+
+            <div class="nav">
+                <div class="h_logodiv"><img id="logo_img" src="./logo-light.png" alt=""></div>
+                <ul id="navbar">
+                    <li class="nav_list home">Home</li>
+                    <li class="nav_list">About</li>
+                    <li class="nav_list">Shop</li>
+                    <li class="nav_list">Blog</li>
+                    <li class="nav_list">Pages</li>
+                    <li class="nav_list">Contact</li>
+                </ul>
+                <div class="nav_icondiv"><i class="fa-solid fa-magnifying-glass"></i><i
+                        class="fa-solid fa-user-group"></i><i class="fa-solid fa-heart"></i><i
+                        class="fa-solid fa-cart-shopping"></i>
+                    <div class="not_div">0</div>
+                </div>
+            </div>
+            <div class="h_display1 opacity">
+                <div class="h_dis_prt1">
+                    <p class="h_p1 h_p1_anim">UP TO 40% OFF</p>
+                    <h1 class="h_p2 h_p2_anim">A Great Meal With Your Pet</h1>
+                    <button class="h_btn_1 h_btn_1_anim">Shop Now</button>
+                </div>
+                <div class="h_dis_prt1">
+                    <div class="h_yellowcircle h_yc_anime"></div>
+                    <img class="dog_img dog_anime" src="./slider-01.png" alt="">
+                </div>
+
+            </div>
+            <div class="h_display2">
+                <div class="h_dis_2blckdiv">
+                    <div class="h_dis2_innerborder">
+                        <p class="h_d2_p1">100% GENUE PRODUCTS</p>
+                        <h2 class="h_d2_p2">This Food is Best For Your Pet</h2>
+                        <p class="h_d2_p3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+                            laboriosam adipisci consequatur in voluptates ipsa, quas vero fugit quam ea!</p>
+                        <button class="h_d2_btn">Shop Now</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="h_arrow_div">
+                <div class="h_left_arrow_div"><i class="fa-solid fa-arrow-left"></i></div>
+                <div class="h_right_arrow_div"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+            <div class="cart_side_div">
+                <div class="csd_div1">
+                    <p class="csd_p1">Favourite list</p><i class="fa-solid fa-angle-right"></i>
+                </div>
+                <div class="csd_div2"></div>
+                <div class="csd_price">Total Price: <p id="csd_price"></p>
+                </div>
+            </div>
+            <div class="black_bg"></div>
+        </header>
+        <section class="sec_1">
+            <img class="s1_img" src="./object1.png" alt="">
+            <p class="s1_p1">TRENDING CATEGORIES</p>
+            <h1 class="s1_p2">Shop By Category</h1>
+            <div class="s1_img_border">
+                <div class="s1_imgbox">
+                    <div class="s1_rotate_border"></div><img src="./cat.png" alt="">
+                </div>
+                <div class="s1_imgbox">
+                    <div class="s1_rotate_border"></div><img src="./gooldfish.png" alt="">
+                </div>
+                <div class="s1_imgbox">
+                    <div class="s1_rotate_border"></div><img src="./parrot.png" alt="">
+                </div>
+                <div class="s1_imgbox">
+                    <div class="s1_rotate_border"></div><img src="./pitbul.png" alt="">
+                </div>
+                <div class="s1_imgbox">
+                    <div class="s1_rotate_border"></div><img src="./rabit.png" alt="">
+                </div>
+                <div class="s1_img_border_2">
+                    <p class="s1_name1">Cat</p>
+                    <p class="s1_name2">Gold_Fish</p>
+                    <p class="s1_name3">Parrot</p>
+                    <p class="s1_name4">Dog</p>
+                    <p class="s1_name5">Rabbit</p>
+                </div>
+            </div>
+
+        </section>
+        <section class="sec_3">
+            <div class="s3_border1">
+                <div class="s3b_prt"><img src="./s3prt1.jpeg" alt="">
+                    <div class="s3_writediv1">
+                        <p class="sb3_p1">50% Off</p>
+                        <h1 class="sb3_p2">DOG FOOD</h1>
+                        <button class="sb3_button">Shop Now</button>
+                    </div>
+                </div>
+                <div class="s3b_prt"><img src="./s3prt2.jpeg" alt="">
+                    <div class="s3_writediv1">
+                        <p class="sb3_p1">50% Off</p>
+                        <h1 class="sb3_p2">CAT FOOD</h1>
+                        <button class="sb3_button">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="s3_border2">
+                <img class="s1_img" src="./object1.png" alt="">
+                <p class="s3b2_p1">BEST PRODUCT</p>
+                <h1 class="s3b2_p2">New Collection<h1>
+                        <div class="s3b2_opt_bordr">
+                            <div class="sbb2_opt border">ALL</div>
+                            <div class="sbb2_opt">NEW</div>
+                            <div class="sbb2_opt">BEST SELLER</div>
+                            <div class="sbb2_opt">FEATURE</div>
+                            <div class="sbb2_opt">ON SALE</div>
+                        </div>
+            </div>
+        </section>
+        <section class="sec_4">
+            <div class="s4_blackdiv2">
+
+            </div>
+            <div class="s4_border"></div>
+        </section>
+    </main>
+    <script>
+
+        let main = document.querySelector("main")
+        let h_p1 = document.querySelector(".h_p1")
+        let h_p2 = document.querySelector(".h_p2")
+        let h_btn_1 = document.querySelector(".h_btn_1")
+        let h_yc = document.querySelector(".h_yellowcircle")
+        let dog_img = document.querySelector(".dog_img")
+        let h_dis2_p1 = document.querySelector(".h_d2_p1")
+        let h_dis2_p2 = document.querySelector(".h_d2_p2")
+        let h_dis2_p3 = document.querySelector(".h_d2_p3")
+        let h_d2_btn = document.querySelector(".h_d2_btn")
+        let h_display_1 = document.querySelector(".h_display1")
+        let h_display_2 = document.querySelector(".h_display2")
+        let h_left_arrow = document.querySelector(".h_left_arrow_div")
+        let h_right_arrow = document.querySelector(".h_right_arrow_div")
+        let header_count = 0
+        let not_div = document.querySelector(".not_div")
+
+
+        header_slider()
+        function header_slider() {
+            h_right_arrow.addEventListener("click", () => {
+                if (header_count < 1) {
+                    header_count++
+                    // console.log(header_count);
+                    h_right_arrow.style.opacity = .5
+                    h_left_arrow.style.opacity = 1
+                    h_display_2.classList.add("opacity")
+                    h_display_1.classList.remove("opacity")
+                    h_dis2_p1.classList.add("h_d2_p1anime")
+                    h_dis2_p2.classList.add("h_d2_p2anime")
+                    h_dis2_p3.classList.add("h_d2_p3anime")
+                    h_d2_btn.classList.add("h_d2_btnanime")
+                    h_p1.classList.remove("h_p1_anim")
+                    h_p2.classList.remove("h_p2_anim")
+                    h_btn_1.classList.remove("h_btn_1_anim")
+                    h_yc.classList.remove("h_yc_anime")
+                    dog_img.classList.remove("dog_anime")
+                }
+            })
+            h_left_arrow.addEventListener("click", () => {
+                if (header_count >= 1) {
+                    header_count--
+                    // console.log(header_count);
+                    h_right_arrow.style.opacity = 1
+                    h_left_arrow.style.opacity = .5
+                    h_display_2.classList.remove("opacity")
+                    h_display_1.classList.add("opacity")
+                    h_p1.classList.add("h_p1_anim")
+                    h_p2.classList.add("h_p2_anim")
+                    h_btn_1.classList.add("h_btn_1_anim")
+                    h_yc.classList.add("h_yc_anime")
+                    dog_img.classList.add("dog_anime")
+                    h_dis2_p1.classList.remove("h_d2_p1anime")
+                    h_dis2_p2.classList.remove("h_d2_p2anime")
+                    h_dis2_p3.classList.remove("h_d2_p3anime")
+                    h_d2_btn.classList.remove("h_d2_btnanime")
+                }
+            })
+        }
+
+        let cart_icon = document.querySelector(".fa-cart-shopping")
+        let crt_item_count = document.querySelector(".not_div")
+        let crt_side_div = document.querySelector(".cart_side_div")
+        let black_bg = document.querySelector(".black_bg")
+        let csd_div_1 = document.querySelector(".csd_div1")
+
+        cart_icon.addEventListener("click", () => {
+            crt_side_div.classList.add("right")
+            black_bg.classList.add("opacity")
+            main.style.height = "100vh"
+        })
+
+        csd_div_1.addEventListener("click", () => {
+            crt_side_div.classList.remove("right")
+            black_bg.classList.remove("opacity")
+            main.style.height = "max-content"
+        })
+
+        let s3_opt = document.querySelectorAll(".sbb2_opt")
+
+        let data = [
+
+            { id: 1, name: "Joust Duffle Bag", price: 20.19, img: "./pic1.jpeg" },
+            { id: 2, name: "Endeavor Daytripa", price: 33.04, img: "./pic2.jpeg" },
+            { id: 3, name: "Impulse Duffle", price: 65.05, img: "./pc3.jpeg" },
+            { id: 4, name: "Driven Backpack", price: 25.03, img: "./pic4.jpeg" },
+            { id: 5, name: "Fusion Backpack", price: 45.08, img: "./pic5.jpeg" },
+            { id: 6, name: "Savvy Shoulder Tote", price: 30.07, img: "./pic6.jpeg" },
+            { id: 7, name: "Voyage Yoga Bag", price: 39.01, img: "./pic7.jpeg" },
+            { id: 8, name: "Wayfarer Messenger Bag", price: 50.04, img: "./pic8.jpeg" },
+
+        ]
+
+        let s4_border = document.querySelector(".s4_border")
+
+        data.forEach((ele, idx) => {
+
+
+            s4_border.innerHTML += `<div class="data_border">
+<div class="data_img_div">
+<div class="s4_blackdiv">
+<div class="s4_icondiv">
+<div class="icon_parent opacity" onclick="Shop(${ele.id} )"><i class="fa-regular fa-heart"></i></div>
+<div class="icon_parent" onclick="Shop(${ele.id})"><i class="fa-solid fa-cart-shopping"></i></div>
+<div class="icon_parent" onclick="eyeclick(${ele.id})"><i class="fa-regular fa-eye"></i></div>
+</div>
+</div>
+<img src="${ele.img}" alt="">
+</div>
+<p class="pr_nme">${ele.name}</p>
+<h1 class="pr_price">$${ele.price}</h1>
+</div>`
+        })
+
+
+        setTimeout(() => {
+            document.querySelectorAll(".data_border").forEach(ele => {
+                ele.style.transition = "transform 0.5s ease-in-out, opacity 0.5s ease-in-out";
+                ele.style.transform = "scale(1)";
+                ele.style.opacity = "1";
+            });
+        }, 50);
+
+
+        s3_opt.forEach((ele, idx) => {
+            ele.addEventListener("click", () => {
+                let filterdata = []
+
+                let boxes_border = document.querySelectorAll(".data_border");
+                boxes_border.forEach(ele => {
+                    ele.style.transform = "scale(0.2)";
+                    ele.style.opacity = "0";
+                });
+
+                s4_border.innerHTML = ""
+                if (ele.innerHTML === "ALL") {
+                    boxes_border.forEach((ele) => {
+                    })
+                    filterdata = data.filter((ele, idx) => {
+                        return ele
+                    })
+                }
+                else if (ele.innerHTML === "NEW") {
+                    filterdata = data.filter((ele, idx) => [3, 6, 0].includes(idx));
+                }
+                else if (ele.innerHTML === "BEST SELLER") {
+                    filterdata = data.filter((ele, idx) => {
+                        return [1, 7, 4, 2].includes(idx)
+                    })
+                }
+                else if (ele.innerHTML === "ON SALE") {
+                    filterdata = data.filter((ele, idx) => [6, 3].includes(idx))
+                }
+                else if (ele.innerHTML === "FEATURE") {
+                    filterdata = data.filter((ele, idx) => [6, 3, 7, 2, 5].includes(idx))
+                }
+                for (let i = 0; i < s3_opt.length; i++) {
+                    s3_opt[i].classList.remove("border")
+                }
+                ele.classList.add("border")
+                // console.log(idx);
+
+                filterdata.forEach((ele, idx) => {
+
+                    s4_border.innerHTML += `<div class="data_border">
+    <div class="data_img_div">
+        <div class="s4_blackdiv">
+            <div class="s4_icondiv">
+                <div class="icon_parent opacity" onclick="Shop(${ele.id} )"><i class="fa-regular fa-heart"></i></div>
+                <div class="icon_parent" onclick="Shop(${ele.id})"><i class="fa-solid fa-cart-shopping"></i></div>
+                <div class="icon_parent" onclick="eyeclick(${ele.id})"><i class="fa-regular fa-eye"></i></div>
+                </div>
+                </div>
+                <img src="${ele.img}" alt="">
+                </div>
+        <p class="pr_nme">${ele.name}</p>
+        <h1 class="pr_price">$${ele.price}</h1>
+        </div>`
+
+                })
+
+                setTimeout(() => {
+                    document.querySelectorAll(".data_border").forEach(ele => {
+                        ele.style.transition = "transform 0.5s ease-in-out, opacity 0.5s ease-in-out";
+                        ele.style.transform = "scale(1)";
+                        ele.style.opacity = "1";
+                    });
+                }, 50);
+            })
+        })
+
+        let new_arr = []
+        let side_inner = document.querySelector(".csd_div2")
+        let s4_blackdiv = document.querySelector(".s4_blackdiv2")
+        let total_price = document.querySelector("#csd_price")
+
+        function Shop(productId) {
+            quantity = 0
+            side_inner.innerHTML = ""
+            let new_pro = data.find((ele) => {
+                return (
+                    ele.id === productId
+                )
+            })
+            if( new_pro  ){
+
+                let ProductB = new_arr.find( (ele) =>   ele.id === productId  )
+
+                if(ProductB){
+                    alert("Check Your FAV-List")
+                    s4_blackdiv.classList.remove("opacity")
+                }
+                else{
+                    new_arr.push(
+                        {
+                            ...new_pro,
+                            quantity: 1,
+                        }
+                    )
+                    s4_blackdiv.classList.add("opacity")
+                    s4_blackdiv.innerHTML = `
+                <div class="s4_fav_not_border">
+                    <div class="fnb_div1" onclick="cs()"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="fnb_div2"><div class="fnb_c_div"><i class="fa-solid fa-check"></i></div>Added to cart successfully!</div>
+                    <div class="fnb_imgdiv"><img src="${new_pro.img} " alt=""></div>
+                    <p class="fnb_p1">${new_pro.name}</p>
+                </div>
+                `
+                    console.log(new_arr);
+                    header_count++
+                }
+                renderCart()
+
+            }
+            // array waly add kry ga inner hmtl walu ni total price ko theek ha 
+            not_div.innerHTML = header_count 
+           
+        }
+        function renderCart() {
+            side_inner.innerHTML = ""; // Clear previous items before rendering
+
+            new_arr.forEach((ele, idx) => {
+                side_inner.innerHTML += `
+        <div class="csd_inner-border">
+            <div class="cib_img_div"><img src="${ele.img}" alt=""></div>
+            <div class="cib_write_div">
+                <p class="np_name">${ele.name}</p>
+                <p class='productprice'>$<span class="price">${ele.price * ele.quantity}</span></p>
+                <div class="csd_cross"><i class="fa-solid fa-xmark"></i></div>
+                <div class="csd_quantity">
+                    <i class="fa-solid fa-minus" id="${idx}"></i>
+                    <p class="csd_quan">${ele.quantity}</p>
+                    <i class="fa-solid fa-plus" id="${idx}"></i>
+                </div>
+            </div>
+        </div>
+    `;
+            });
+
+            attachEventListeners(); // Attach event listeners after rendering
+            let productprice = document.querySelector(".productprice")
+            let para = document.querySelector(".csd_quan")
+        
+     
+        let amount = new_arr.reduce((acc, num) => {
+            return acc + num.price
+        }, 0)
+        // reduce metthod all elements ki price ko plus r rha ha 
+        total_price.innerHTML = ` $${Math.ceil(amount)}`
+        
+    }
+
+
+
+        function eyeclick(productid2) {
+
+            let new_pro2 = data.find((ele => ele.id === productid2))
+            // console.log(new_pro2);
+
+            console.log(new_pro2);
+            s4_blackdiv.classList.add("opacity")
+            s4_blackdiv.innerHTML = `
+                <div class="eye_border">
+                    <i class="fa-solid fa-xmark eye_mark" onclick="cs()"></i>
+                    <div class="eye_bp1"><img src="${new_pro2.img}" alt=""></div>
+                    <div class="eye_bp2">
+                        <div class="eye_write1"><h1 class="ew_h1">${new_pro2.name}</h1> <h1 class="ew_h2"><b>${new_pro2.price}</b></h1>
+                            <div class="eye_rating_div">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div><p class="ew_p">(Customer Review Rating)</p></div>
+                    </div>
+                    <div class="eye_write2">
+                        <p class="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eos, esse, architecto praesentium libero molestiae, autem non quidem possimus quasi placeat illo exercitationem. Doloribus temporibus ratione rerum numquam perferendis inventore maxime, laboriosam ipsum odio modi ducimus optio impedit doloremque ad sunt nostrum? Veritatis, tenetur ipsum!</p>
+                        <p class="ep_2"><span>SKU:</span>Ch-256xl</p>
+                        <p class="ep_3"><span>Category:</span>Pet.eCommerce</p>
+                        <p class="ep_3"><span>Tags:</span>Pet,Animal.</p>
+                        <div class="eye_button_border">
+                            <div class="eye_b1"><i class="fa-solid fa-minus"></i><p class="eye_b2_quantity"></p><i class="fa-solid fa-plus plus"></i></div>
+                            <button class="eye_b2" onclick="Shop(${new_pro2.id})">Add To Cart</button>
+                            <div class="eye_b3" onclick="Shop(${new_pro2.id})"><i class="fa-solid fa-heart"></i></div>
+                            <div class="eye_b3" onclick="cs()"><i class="fa-regular fa-eye"></i></div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>`;
+
+            // query select sy select kr k agly function ma argument send krien gain 
+        }
+
+        function attachEventListeners() {
+            document.querySelectorAll(".fa-plus").forEach((icon) => {
+                icon.addEventListener("click", () => {
+                    let idx = icon.getAttribute("id");
+                    // ele.ki id get ke ha 
+                    new_arr[idx].quantity++;
+                    updateUI(idx);
+                });
+            });
+
+            document.querySelectorAll(".fa-minus").forEach((icon) => {
+                icon.addEventListener("click", () => {
+                    let idx = icon.getAttribute("id");
+                    if (new_arr[idx].quantity > 1) {
+                        new_arr[idx].quantity--;
+                        updateUI(idx);
+                    }
+                });
+            });
+        }
+
+        // Function to update UI when quantity changes
+        function updateUI(idx) {
+            let productDivs = document.querySelectorAll(".csd_inner-border");
+
+
+            console.log(productDivs[idx]);
+
+            let productDiv = productDivs[idx];
+
+            let quantityElement = productDiv.querySelector(".csd_quan");
+            let priceElement = productDiv.querySelector(".price");
+
+            quantityElement.textContent = new_arr[idx].quantity;
+            priceElement.textContent = `$${new_arr[idx].quantity * new_arr[idx].price}`;
+
+            let amount = new_arr.reduce((acc, num) => {
+                return acc + num.price * num.quantity
+            }, 0)
+            // reduce metthod all elements ki price ko plus r rha ha 
+            total_price.innerHTML = ` $${Math.ceil(amount)}`
+        }
+
+        // Initial render
+
+
+
+
+        function cs() {
+            s4_blackdiv.classList.remove("opacity")
+
+        }
+        // line 1902 important function() ha quantity ka 
+
+        // line 1691 or 1692 pr jo argument snd kiya ha uski samaj ni a rhi
+        // side bar pr remove ka icon lga pr cick pr kesa funtion run krna ha jisssy quantity or price khatam ho jae or remove ho ja wo div
+        // let kre k animationkesy ad kro ?eye div pr or cart div pr
+        // settime out sy clas add remove ho skti hq
+
+
+    </script>
+</body>
+
+</h
